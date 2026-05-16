@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hậu Nguyễn | Digital Universe</title>
+    <style>
+        /* --- KHỞI TẠO HỆ THỐNG MÀU TONE ẢO (CYBERPUNK / NEON GLOW) --- */
+        :root {
+            --bg-deep: #0a0a16;
+            --bg-card: rgba(20, 20, 43, 0.7);
+            --neon-pink: #ff2a74;
+            --neon-blue: #00f0ff;
+            --neon-purple: #b10dc9;
+            --text-glow: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #050510 0%, #0c0a25 50%, #150a30 100%);
+            color: #e0e0ff;
+            line-height: 1.7;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        /* --- HIỆU ỨNG TEXT ĐẸP & ẢO --- */
+        .glow-text {
+            color: var(--text-glow);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.6),
+                         0 0 20px rgba(0, 240, 255, 0.4),
+                         0 0 30px rgba(177, 13, 201, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* --- HEADER BANNER --- */
+        header {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            position: relative;
+            background: radial-gradient(circle at top, rgba(177, 13, 201, 0.2) 0%, transparent 70%);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        header p {
+            color: #a0a0d0;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* --- THANH ĐIỀU HƯỚNG CÓ LOGO TÊN --- */
+        nav {
+            background: rgba(10, 10, 25, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 42, 116, 0.15);
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 1rem;
+        }
+
+        nav .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            height: 60px;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+            text-decoration: none;
+        }
+
+        nav .menu-links {
+            display: flex;
+        }
+
+        nav a.nav-link {
+            color: #8a8ab0;
+            padding: 0 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            line-height: 60px;
+            transition: all 0.3s ease;
+        }
+
+        nav a.nav-link:hover, nav a.active {
+            color: var(--neon-pink);
+            text-shadow: 0 0 8px rgba(255, 42, 116, 0.6);
+        }
+
+        /* --- KHUNG NỘI DUNG (CONTAINER) --- */
+        .container {
+            max-width: 700px;
+            margin: 2.5rem auto;
+            padding: 0 1.2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(177, 13, 201, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border-left: 4px solid var(--neon-pink);
+            padding-left: 12px;
+            color: #fff;
+        }
+
+        .card p {
+            margin-bottom: 1.2rem;
+            color: #b0b0d8;
+            font-size: 1.05rem;
+        }
+
+        /* --- NÚT BẤM PHÁT SÁNG (NEON BUTTON) --- */
+        .btn-neon {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2),
+                        inset 0 0 10px rgba(0, 240, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .btn-neon:hover {
+            color: var(--bg-deep);
+            background: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6),
+                        0 0 40px rgba(0, 240, 255, 0.4);
+        }
+
+        /* --- CHÂN TRANG (FOOTER) --- */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(5, 5, 15, 0.95);
+            border-top: 1px solid rgba(177, 13, 201, 0.15);
+            color: #6a6a90;
+            font-size: 0.85rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        footer span {
+            color: var(--neon-pink);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PHẦN TIÊU ĐỀ CHÍNH -->
+    <header>
+        <h1 class="glow-text">HẬU NGUYỄN</h1>
+        <p>WELCOME TO THE DIGITAL SPACE</p>
+    </header>
+
+    <!-- THANH MENU ĐIỀU HƯỚNG (CÓ CHỮ HẬU NGUYỄN LÀM LOGO) -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">HẬU NGUYỄN . DEV</a>
+            <div class="menu-links">
+                <a href="#" class="nav-link active">Vũ Trụ Tôi</a>
+                <a href="#" class="nav-link">Sáng Tạo</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- KHUNG NỘI DUNG CHÍNH -->
+    <div class="container">
+        <div class="card">
+            <h2>Hồ Sơ Không Gian</h2>
+            <p>Xin chào! Mình là <span class="gradient-text">Hậu Nguyễn</span>. Đây là vùng không gian số cá nhân mang đậm dấu ấn riêng của <span class="gradient-text">Hậu Nguyễn</span>, được lập trình và tối ưu hóa trực tiếp trên thiết bị di động.</p>
+            <p>Nơi đây thể hiện tư duy thẩm mỹ, niềm đam mê với công nghệ và khát khao kiến tạo nên những giao diện ảo ảnh độc đáo mang hơi hướng tương lai.</p>
+            
+            <center>
+                <a href="#" class="btn-neon">Kết Nối Với Hậu Nguyễn</a>
+            </center>
+        </div>
+    </div>
+
+    <!-- PHẦN BẢN QUYỀN CHÂN TRANG -->
+    <footer>
+        <p>&copy; 2026 Crafted with <span>&hearts;</span> by Hậu Nguyễn</p>
+    </footer>
+
+</body>
+</html>
